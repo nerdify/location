@@ -2,24 +2,27 @@
 
 namespace Location\Location\Task;
 
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
 class UpdateIsoData
 {
-    const BASE_URI = "https://salsa.debian.org/";
-    const COUNTRIES_SRC = "iso-codes-team/iso-codes/-/raw/main/data/iso_3166-1.json";
-    const SUBDIVISIONS_SRC = "iso-codes-team/iso-codes/-/raw/main/data/iso_3166-2.json";
-    const COUNTRIES_DEST = "../../src/config/iso_3166-1.json";
-    const SUBDIVISIONS_DEST = "../../src/config/iso_3166-2.json";
+    const BASE_URI = 'https://salsa.debian.org/';
+
+    const COUNTRIES_SRC = 'iso-codes-team/iso-codes/-/raw/main/data/iso_3166-1.json';
+
+    const SUBDIVISIONS_SRC = 'iso-codes-team/iso-codes/-/raw/main/data/iso_3166-2.json';
+
+    const COUNTRIES_DEST = '../../src/config/iso_3166-1.json';
+
+    const SUBDIVISIONS_DEST = '../../src/config/iso_3166-2.json';
 
     protected Client $client;
 
     public function __construct()
     {
         $this->client = new Client([
-            'base_uri' => self::BASE_URI
+            'base_uri' => self::BASE_URI,
         ]);
     }
 
