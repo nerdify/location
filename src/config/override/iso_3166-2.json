@@ -1,0 +1,98 @@
+{
+    "GB-ENG": {
+        "name": "England"
+    },
+    "GB-NIR": {
+        "name": "Northern Ireland"
+    },
+    "GB-SCT": {
+        "name": "Scotland"
+    },
+    "GB-WLS": {
+        "name": "Wales"
+    },
+    "HK-HCW": {
+        "name": "Central and Western Hong Kong Island"
+    },
+    "HK-HEA": {
+        "name": "Eastern Hong Kong Island"
+    },
+    "HK-HSO": {
+        "name": "Southern Hong Kong Island"
+    },
+    "HK-HWC": {
+        "name": "Wan Chai Hong Kong Island"
+    },
+    "HK-KKC": {
+        "name": "Kowloon City Kowloon"
+    },
+    "HK-KKT": {
+        "name": "Kwun Tong Kowloon"
+    },
+    "HK-KSS": {
+        "name": "Sham Shui Po Kowloon"
+    },
+    "HK-KWT": {
+        "name": "Wong Tai Sin Kowloon"
+    },
+    "HK-KYT": {
+        "name": "Yau Tsim Mong Kowloon"
+    },
+    "HK-NIS": {
+        "name": "Islands New Territories"
+    },
+    "HK-NKT": {
+        "name": "Kwai Tsing New Territories"
+    },
+    "HK-NNO": {
+        "name": "North New Territories"
+    },
+    "HK-NSK": {
+        "name": "Sai Kung New Territories"
+    },
+    "HK-NST": {
+        "name": "Sha Tin New Territories"
+    },
+    "HK-NTM": {
+        "name": "Tuen Mun New Territories"
+    },
+    "HK-NTP": {
+        "name": "Tai Po New Territories"
+    },
+    "HK-NTW": {
+        "name": "Tsuen Wan New Territories"
+    },
+    "HK-NYL": {
+        "name": "Yuen Long New Territories"
+    },
+    "IL-D": {
+        "name": "Southern"
+    },
+    "IL-M": {
+        "name": "Central"
+    },
+    "IL-Z": {
+        "name": "Northern"
+    },
+    "IL-HA": {
+        "name": "Haifa"
+    },
+    "IL-TA": {
+        "name": "Tel Aviv"
+    },
+    "IL-JM": {
+        "name": "Jerusalem"
+    },
+    "MP-S": {
+        "name": "Saipan"
+    },
+    "MP-T": {
+        "name": "Tinian"
+    },
+    "MP-N": {
+        "name": "Northern Islands"
+    },
+    "MP-R": {
+        "name": "Rota"
+    }
+}
