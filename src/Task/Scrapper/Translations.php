@@ -9,12 +9,15 @@ use Symfony\Component\HttpClient\HttpClient;
 
 class Translations
 {
-    const BASE_URL = "https://en.wikipedia.org";
-    const SUBDIVISION_BASE_URL = "/wiki/ISO_3166-2:";
-    const TRANSLATION_DEST = "../../src/config/iso_3166-2.en-translations.json";
+    const BASE_URL = 'https://en.wikipedia.org';
+
+    const SUBDIVISION_BASE_URL = '/wiki/ISO_3166-2:';
+
+    const TRANSLATION_DEST = '../../src/config/iso_3166-2.en-translations.json';
+
     const COUNTRIES_TO_SKIP = [
-        "EE",  # For Estonia the local names are better than English ones
-        "JP" # Source data from salsa-debian already has english translations where applicable
+        'EE',  // For Estonia the local names are better than English ones
+        'JP', // Source data from salsa-debian already has english translations where applicable
     ];
 
     protected Client $client;

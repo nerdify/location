@@ -5,15 +5,17 @@ namespace Location\Location\Task;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Utils;
-use Location\Location\Utils\JsonCollectionStreamWriter;
 
 class UpdateGeoName
 {
-    const ALL_COUNTRIES_SRC = "https://download.geonames.org/export/dump/allCountries.zip";
+    const ALL_COUNTRIES_SRC = 'https://download.geonames.org/export/dump/allCountries.zip';
+
 //    const ALL_COUNTRIES_DEST = "../../src/config/geonames.json";
-    const ALL_COUNTRIES_DEST = "../../src/config/geonames.txt";
-    const ZIP_TEMP_NAME = "allCountries.zip";
-    const ZIP_TEMP_EXTRACT_DEST = "countries";
+    const ALL_COUNTRIES_DEST = '../../src/config/geonames.txt';
+
+    const ZIP_TEMP_NAME = 'allCountries.zip';
+
+    const ZIP_TEMP_EXTRACT_DEST = 'countries';
 
     /**
      * @throws GuzzleException
@@ -22,8 +24,8 @@ class UpdateGeoName
     {
         $client = new Client();
 
-        $path = sprintf("%s/%s", sys_get_temp_dir(), self::ZIP_TEMP_NAME);
-        $zipPath = sprintf("%s/%s", sys_get_temp_dir(), self::ZIP_TEMP_EXTRACT_DEST);
+        $path = sprintf('%s/%s', sys_get_temp_dir(), self::ZIP_TEMP_NAME);
+        $zipPath = sprintf('%s/%s', sys_get_temp_dir(), self::ZIP_TEMP_EXTRACT_DEST);
 
         $resource = Utils::tryFopen($path, 'w');
 
@@ -50,7 +52,6 @@ class UpdateGeoName
         unlink($zipFileName);
     }
 
-
     private function processGeoNameFile(string $filePath): void
     {
         echo "\e[0;32;mReading file...\e[0m\n";
@@ -66,7 +67,7 @@ class UpdateGeoName
 
                 // feature classes defined here: http://download.geonames.org/export/dump
                 if (in_array($featureClass, ['P', 'A'])) {
-                    $geoNames[$id]= ['name' => $name];
+                    $geoNames[$id] = ['name' => $name];
                 }
             }
         }
@@ -80,7 +81,7 @@ class UpdateGeoName
         echo "\e[0;32;mThe data has been written...\e[0m\n";
     }
 
-    function getAllLines($fileHandle): \Generator
+    public function getAllLines($fileHandle): \Generator
     {
         while (! feof($fileHandle)) {
             yield fgets($fileHandle);

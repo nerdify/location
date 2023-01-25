@@ -1,8 +1,6 @@
 <?php
 
-use Location\Location\Location;
 use Location\Location\Task\Scrapper\Translations;
-use Location\Location\Task\UpdateGeoName;
 use Location\Location\Task\UpdateIsoData;
 
 require '/Users/carlosduarte/Documents/projects/nerdify/location-php/vendor/autoload.php';
@@ -27,4 +25,3 @@ echo "\e[0;32;mExecuting UpdateGeoName task...\e[0m\n";
 sleep(1);
 
 echo "\e[0;32;mAll tasks completed...\e[0m\n";
-

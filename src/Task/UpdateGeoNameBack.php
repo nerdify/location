@@ -9,11 +9,14 @@ use Location\Location\Utils\JsonCollectionStreamWriter;
 
 class UpdateGeoNameBack
 {
-    const ALL_COUNTRIES_SRC = "https://download.geonames.org/export/dump/allCountries.zip";
-    const ALL_COUNTRIES_DEST = "../../src/config/geonames.json";
+    const ALL_COUNTRIES_SRC = 'https://download.geonames.org/export/dump/allCountries.zip';
+
+    const ALL_COUNTRIES_DEST = '../../src/config/geonames.json';
+
 //    const ALL_COUNTRIES_DEST = "../../src/config/geonames.txt";
-    const ZIP_TEMP_NAME = "allCountries.zip";
-    const ZIP_TEMP_EXTRACT_DEST = "countries";
+    const ZIP_TEMP_NAME = 'allCountries.zip';
+
+    const ZIP_TEMP_EXTRACT_DEST = 'countries';
 
     /**
      * @throws GuzzleException
@@ -22,8 +25,8 @@ class UpdateGeoNameBack
     {
         $client = new Client();
 
-        $path = sprintf("%s/%s", sys_get_temp_dir(), self::ZIP_TEMP_NAME);
-        $zipPath = sprintf("%s/%s", sys_get_temp_dir(), self::ZIP_TEMP_EXTRACT_DEST);
+        $path = sprintf('%s/%s', sys_get_temp_dir(), self::ZIP_TEMP_NAME);
+        $zipPath = sprintf('%s/%s', sys_get_temp_dir(), self::ZIP_TEMP_EXTRACT_DEST);
 
         $resource = Utils::tryFopen($path, 'w');
 
@@ -65,7 +68,7 @@ class UpdateGeoNameBack
 
                 // feature classes defined here: http://download.geonames.org/export/dump
                 if (in_array($featureClass, ['P', 'A'])) {
-                    $geoNames[$id]= ['name' => $name];
+                    $geoNames[$id] = ['name' => $name];
 
                     $writer->push($geoNames);
                 }
@@ -81,7 +84,7 @@ class UpdateGeoNameBack
         echo "\e[0;32;mThe data has been written...\e[0m\n";
     }
 
-    function getAllLines($fileHandle): \Generator
+    public function getAllLines($fileHandle): \Generator
     {
         while (! feof($fileHandle)) {
             yield fgets($fileHandle);

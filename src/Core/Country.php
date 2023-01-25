@@ -7,6 +7,7 @@ class Country
     private static self $instance;
 
     const COUNTRIES_DEST = __DIR__.'/../config/iso_3166-1.json';
+
     const COUNTRIES_OVERRIDE_DEST = __DIR__.'/../config/override/iso_3166-1.json';
 
     public array $countries = [];
