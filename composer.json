@@ -1,0 +1,56 @@
+{
+    "name": "nerdify/location",
+    "description": "PHP library for accessing ISO3166-1 (country) and ISO3166-2 (subdivision) data as well as geoname data for cities.",
+    "keywords": [
+        "Nerdify/Location",
+        "location"
+    ],
+    "homepage": "https://github.com/nerdify/location",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nerdify S.A. <hello@getnerdify.com>",
+            "email": "hello@getnerdify.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-dom": "*",
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/collections": "^9.46",
+        "illuminate/support": "^9.46",
+        "symfony/browser-kit": "^6.2",
+        "symfony/css-selector": "^6.2",
+        "symfony/http-client": "^6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "laravel/pint": "^1.2",
+        "spatie/ray": "^1.28"
+    },
+    "autoload": {
+        "psr-4": {
+            "Location\\Location\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Location\\Location\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+
+            "phpstan/extension-installer": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
