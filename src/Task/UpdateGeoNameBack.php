@@ -57,7 +57,7 @@ class UpdateGeoNameBack
     {
         $fileHandle = fopen($filePath, 'r');
 
-        while (!feof($fileHandle)) {
+        while (! feof($fileHandle)) {
             yield fgets($fileHandle);
         }
 
@@ -78,7 +78,7 @@ class UpdateGeoNameBack
                 // feature classes defined here: http://download.geonames.org/export/dump
                 if (in_array($featureClass, ['P', 'A'])) {
                     // $geoNames[$id] = ['name' => $name];
-                    $geoNames = '"' . $id . '": {"name": "' . $name . '"}';
+                    $geoNames = '"'.$id.'": {"name": "'.$name.'"}';
 
                     $writer->push($geoNames);
                 }
