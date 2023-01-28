@@ -21,7 +21,7 @@ echo "\e[0;32;mExecuting task...\e[0m\n";
 //sleep(1);
 //
 echo "\e[0;32;mExecuting UpdateGeoName task...\e[0m\n";
-(new \Location\Location\Task\UpdateGeoName())->load();
+(new \Location\Location\Task\UpdateGeoNameBack())->load();
 sleep(1);
 
 echo "\e[0;32;mAll tasks completed...\e[0m\n";

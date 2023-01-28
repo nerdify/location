@@ -13,7 +13,7 @@ class UpdateGeoNameBack
 
     const ALL_COUNTRIES_DEST = '../../src/config/geonames.json';
 
-//    const ALL_COUNTRIES_DEST = "../../src/config/geonames.txt";
+    //    const ALL_COUNTRIES_DEST = "../../src/config/geonames.txt";
     const ZIP_TEMP_NAME = 'allCountries.zip';
 
     const ZIP_TEMP_EXTRACT_DEST = 'countries';
@@ -53,29 +53,37 @@ class UpdateGeoNameBack
         unlink($zipFileName);
     }
 
+    private function getAllLines(string $filePath): \Generator
+    {
+        $fileHandle = fopen($filePath, 'r');
+
+        while (!feof($fileHandle)) {
+            yield fgets($fileHandle);
+        }
+
+        fclose($fileHandle);
+    }
+
     private function processGeoNameFile(string $filePath): void
     {
         echo "\e[0;32;mReading file...\e[0m\n";
 
         $writer = new JsonCollectionStreamWriter(self::ALL_COUNTRIES_DEST, false);
 
-        $fileHandle = fopen($filePath, 'r');
-
-        foreach ($this->getAllLines($fileHandle) as $line) {
+        foreach ($this->getAllLines($filePath) as $line) {
             $values = explode("\t", $line, 10);
             if (count($values) > 9) {
                 [$id, $name, $_, $_, $_, $_, $featureClass, $_, $countryCode, $_] = $values;
 
                 // feature classes defined here: http://download.geonames.org/export/dump
                 if (in_array($featureClass, ['P', 'A'])) {
-                    $geoNames[$id] = ['name' => $name];
+                    // $geoNames[$id] = ['name' => $name];
+                    $geoNames = '"' . $id . '": {"name": "' . $name . '"}';
 
                     $writer->push($geoNames);
                 }
             }
         }
-
-        fclose($fileHandle);
 
         echo "\e[0;32;mWriting in a new File...\e[0m\n";
 
@@ -83,75 +91,4 @@ class UpdateGeoNameBack
 
         echo "\e[0;32;mThe data has been written...\e[0m\n";
     }
-
-    public function getAllLines($fileHandle): \Generator
-    {
-        while (! feof($fileHandle)) {
-            yield fgets($fileHandle);
-        }
-    }
 }
-
-//
-//public function processGeoNameFile(string $filePath): void
-//{
-//    echo "\e[0;32;mReading file...\e[0m\n";
-//
-//    $writer = new JsonCollectionStreamWriter(self::ALL_COUNTRIES_DEST);
-//
-//    $fileHandle = fopen($filePath, 'r');
-////        $geoNames = [];
-////        $geoNames = '';
-//
-////        $gestor = @fopen("allCountries.txt", "r");
-//
-////        if ($fileHandle) {
-////            while (($line = fgets($fileHandle, 4096)) !== false) {
-////                $values = explode("\t", $line, 10);
-////                if (count($values) > 9) {
-////                    [$id, $name, $_, $_, $_, $_, $featureClass, $_, $countryCode, $_] = $values;
-////
-////                    // feature classes defined here: http://download.geonames.org/export/dump
-////                    if (in_array($featureClass, ['P', 'A'])) {
-//////                        $geoNames[] = compact('id', 'name', 'countryCode');
-////                        $geoNames .= "$id\t$name\t$countryCode\n";
-////                    }
-////                }
-////            }
-////
-////            if (! feof($fileHandle)) {
-////                echo "Error: fallo inesperado de fgets()\n";
-////            }
-////        }
-//
-//    foreach ($this->getAllLines($fileHandle) as $line) {
-//        $values = explode("\t", $line, 10);
-//        if (count($values) > 9) {
-//            [$id, $name, $_, $_, $_, $_, $featureClass, $_, $countryCode, $_] = $values;
-//
-//            // feature classes defined here: http://download.geonames.org/export/dump
-//            if (in_array($featureClass, ['P', 'A'])) {
-//                $geoNames = compact('id', 'name', 'countryCode');
-//
-//                $writer->push($geoNames);
-//            }
-//        }
-//
-////            [$id, $name, $_, $_, $_, $_, $featureClass, $_, $countryCode, $_] = explode("\t", $line);
-////
-////            // feature classes defined here: http://download.geonames.org/export/dump
-////            if (in_array($featureClass, ['P', 'A'])) {
-////                $geoNames[] = compact('id', 'name', 'countryCode');
-////            }
-//    }
-//
-//    fclose($fileHandle);
-//
-//    echo "\e[0;32;mWriting in a new File...\e[0m\n";
-//
-//    $writer->close();
-////        file_put_contents(self::ALL_COUNTRIES_DEST, json_encode($geoNames));
-////        file_put_contents(self::ALL_COUNTRIES_DEST, $geoNames);
-//
-//    echo "\e[0;32;mThe data has been written...\e[0m\n";
-//}

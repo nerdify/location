@@ -43,16 +43,16 @@ class JsonCollectionStreamWriter
     /**
      * Serialize the item and write it to the collection.
      */
-    public function push(array $item): void
+    public function push(string $item): void
     {
         // We don't need to separate from the previous item if there are none.
         if ($this->key !== 0) {
             fwrite($this->resource, ',');
         }
 
-        fwrite($this->resource, json_encode($item));
+        fwrite($this->resource, $item);
 
-        $this->key++;
+        $this->key = 1;
     }
 
     /**
